@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
+    "build:app-angular": "nx build app-angular --output-hashing none",
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2020 browser module main"
@@ -14,6 +15,7 @@
     "@angular/common": "~14.0.0",
     "@angular/compiler": "~14.0.0",
     "@angular/core": "~14.0.0",
+    "@angular/elements": "^14.0.3",
     "@angular/forms": "~14.0.0",
     "@angular/platform-browser": "~14.0.0",
     "@angular/platform-browser-dynamic": "~14.0.0",
