@@ -14,7 +14,6 @@ export class AppElement extends HTMLElement {
         <div><a class="dashboard__link" href="app-d">Team D</a></div>
       </div>
       <div id="micro-frontend-root">
-        <p> Click a link above to load the desired app </p>
       </div>
       `;
     doRouting();

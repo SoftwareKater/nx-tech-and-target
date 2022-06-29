@@ -24,4 +24,7 @@ export function doRouting() {
   console.log(path);
   const webComponent = getComponentByPath(path);
   console.log(webComponent);
+  const parent = document.getElementById('micro-frontend-root');
+  renderComponent(parent, webComponent);
+  console.log(parent);
 }
