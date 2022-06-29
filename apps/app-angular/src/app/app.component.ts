@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'tech-and-target-root',
+  selector: 'app-angular-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'app-angular';
+  title = 'Tech and Target - Team A';
 }
