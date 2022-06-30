@@ -40,7 +40,8 @@
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
-        "buildTarget": "shell:build"
+        "buildTarget": "shell:build",
+        "proxyConfig": "apps/shell/proxy.config.json"
       },
       "configurations": {
         "production": {
