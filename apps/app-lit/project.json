@@ -9,6 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
+        "webpackConfig": "apps/app-lit/webpack.config.js",
         "outputPath": "dist/apps/app-lit",
         "compiler": "babel",
         "index": "apps/app-lit/src/index.html",

@@ -4,18 +4,22 @@ interface ComponentInfo {
 }
 
 const ROUTES = {
+  // @todo game master: change link according to tech picks
   '/team-a': {
     tag: 'app-angular-root',
     sources: ['/apps/app-angular/main.js'],
   },
+  // @todo game master: change link according to tech picks
   '/team-b': {
     tag: 'app-react-root',
     sources: ['/apps/app-react/main.js'],
   },
+  // @todo game master: change link according to tech picks
   '/team-c': {
     tag: 'app-lit-root',
-    sources: ['/apps/app-lit/main.b728cf831d45f4a6.esm.js'],
+    sources: ['/apps/app-lit/main.js'],
   },
+  // @todo game master: change link according to tech picks
   '/team-d': {
     tag: 'app-vue-root',
     sources: ['/apps/app-vue/main.js'],
@@ -30,18 +34,23 @@ export function loadScripts(sources: string[]): void {
   }
 }
 
-export async function getComponentByTag(elementTag: string): Promise<HTMLElement | undefined> {
+export async function getComponentByTag(
+  elementTag: string
+): Promise<HTMLElement | undefined> {
+  console.log(`[shell:router] Waiting for Custom Elements Registry`);
   try {
     await customElements.whenDefined(elementTag);
-  } catch(e) {
-    console.error(e)
+  } catch (e) {
+    console.error(e);
   } finally {
-    console.log(`[shell:router] Custom Element ${elementTag} is available on Custom Element Registry`)
+    console.log(
+      `[shell:router] Custom Element ${elementTag} is available on Custom Elements Registry`
+    );
   }
   const componentConstructor = customElements.get(elementTag);
   if (!componentConstructor) {
     console.error('[shell:router] Custom Element does not exist.');
-    return undefined
+    return undefined;
   }
   const component = document.createElement(elementTag);
   console.log(`[shell:router] Created DOM node from custom element`, component);
