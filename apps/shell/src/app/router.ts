@@ -1,9 +1,9 @@
 const ROUTES = {
   '/': 'root',
-  '/app-a': 'app-a',
-  '/app-b': 'app-b',
-  '/app-c': 'app-c',
-  '/app-d': 'app-d',
+  '/team-a': 'app-angular-root',
+  '/team-b': 'app-react-root',
+  '/team-c': 'app-lit-root',
+  '/team-d': 'app-vue-root',
 };
 
 export function getComponentByPath(path: string): HTMLElement {
@@ -16,6 +16,7 @@ export function renderComponent(
   parent: HTMLElement,
   component: HTMLElement
 ): void {
+  console.log(`Appending ${component} as a child of ${parent}`)
   parent.appendChild(component);
 }
 

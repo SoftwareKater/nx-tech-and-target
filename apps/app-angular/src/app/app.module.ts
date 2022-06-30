@@ -16,8 +16,8 @@ export class AppModule implements DoBootstrap {
   ngDoBootstrap(): void {
     console.log('bootstrapping angular app')
     const angularWebComponent = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define('app-a', angularWebComponent);
-    customElements.whenDefined('app-a').then((res) => console.log(res))
+    customElements.define('app-angular-root', angularWebComponent);
+    customElements.whenDefined('app-angular-root').then((res) => console.log(res))
     setTimeout(() => {
       console.log('not defined...')
     }, 5000);

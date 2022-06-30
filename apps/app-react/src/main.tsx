@@ -16,4 +16,4 @@ class ReactWebComponent extends HTMLElement {
   }
 }
 
-customElements.define('app-b', ReactWebComponent);
+customElements.define('app-react-root', ReactWebComponent);
