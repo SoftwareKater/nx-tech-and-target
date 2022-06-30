@@ -13,7 +13,7 @@ export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) {}
 
   ngDoBootstrap(): void {
-    customElements.whenDefined('app-angular-root').then(() => console.log(`[app:angular] created web component`, customElements.get('app-angular-root')))
+    customElements.whenDefined('app-angular-root').then(() => console.log(`[app:angular] Successfully created web component`))
     console.log('[app:angular] bootstrapping angular app')
     const angularWebComponent = createCustomElement(AppComponent, { injector: this.injector });
     customElements.define('app-angular-root', angularWebComponent);

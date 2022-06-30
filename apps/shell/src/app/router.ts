@@ -14,7 +14,7 @@ const ROUTES = {
   },
   '/team-c': {
     tag: 'app-lit-root',
-    sources: ['/apps/app-lit/main.js'],
+    sources: ['/apps/app-lit/main.b728cf831d45f4a6.esm.js'],
   },
   '/team-d': {
     tag: 'app-vue-root',
@@ -22,30 +22,30 @@ const ROUTES = {
   },
 };
 
-export function loadScripts(path: string): void {
-  const componentInfo = ROUTES[path];
-  for (const src of componentInfo.sources) {
+export function loadScripts(sources: string[]): void {
+  for (const src of sources) {
     const scriptElement = document.createElement('script');
     scriptElement.src = src;
     document.body.appendChild(scriptElement);
   }
 }
 
-export function getComponentByPath(path: string): HTMLElement {
-  const elementTag = ROUTES[path].tag;
+export async function getComponentByTag(elementTag: string): Promise<HTMLElement | undefined> {
+  try {
+    await customElements.whenDefined(elementTag);
+  } catch(e) {
+    console.error(e)
+  } finally {
+    console.log(`[shell:router] Custom Element ${elementTag} is available on Custom Element Registry`)
+  }
   const componentConstructor = customElements.get(elementTag);
-  console.log(`[shell:router] Searching for ${elementTag} in the CustomElementsRegistry... found ${componentConstructor}`);
+  if (!componentConstructor) {
+    console.error('[shell:router] Custom Element does not exist.');
+    return undefined
+  }
   const component = document.createElement(elementTag);
-  console.log(`[shell:router]`, component)
+  console.log(`[shell:router] Created DOM node from custom element`, component);
   return component;
-}
-
-export function renderComponent(
-  parent: HTMLElement,
-  component: HTMLElement
-): void {
-  console.log(`[shell:router] Appending ${component.nodeName} as a child of ${parent.nodeName + '#' + parent.id}`)
-  parent.appendChild(component);
 }
 
 export async function doRouting() {
@@ -53,10 +53,8 @@ export async function doRouting() {
   if (path == '/') {
     return;
   }
-  loadScripts(path);
-  setTimeout(() => {
-    const webComponent = getComponentByPath(path);
-    const parent = document.getElementById('micro-frontend-root');
-    renderComponent(parent, webComponent);
-  }, 5000);
+  loadScripts(ROUTES[path].sources);
+  const webComponent = await getComponentByTag(ROUTES[path].tag);
+  const parent = document.getElementById('micro-frontend-root');
+  parent.appendChild(webComponent);
 }
