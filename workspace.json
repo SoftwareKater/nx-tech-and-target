@@ -4,6 +4,8 @@
   "projects": {
     "app-angular": "apps/app-angular",
     "app-angular-e2e": "apps/app-angular-e2e",
+    "app-lit": "apps/app-lit",
+    "app-lit-e2e": "apps/app-lit-e2e",
     "app-react": "apps/app-react",
     "app-react-e2e": "apps/app-react-e2e",
     "shell": "apps/shell",
