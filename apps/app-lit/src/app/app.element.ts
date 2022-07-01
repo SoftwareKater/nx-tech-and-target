@@ -1,7 +1,9 @@
 import { html, css, LitElement } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
 
-@customElement('app-lit-root')  // do NOT change this
+const WEB_COMPONENT_NAME = 'app-lit-root'; // do NOT change this
+
+@customElement(WEB_COMPONENT_NAME)  // do NOT change this
 export class AppLitRoot extends LitElement {
   static styles = css`
     p {
@@ -20,8 +22,9 @@ export class AppLitRoot extends LitElement {
   }
 }
 
+console.warn('Hi')
+
 // register web component without using proposal-class-decorators
-// const webComponentName = 'app-lit-root'; // do NOT change this
 // customElements
 //   .whenDefined(webComponentName)
 //   .then(() =>
