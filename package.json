@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build:app-angular": "nx build app-angular --output-hashing none",
+    "start": "nx serve shell",
+    "build:app-angular": "nx build app-angular --output-hashing none --single-bundle",
+    "build:app-lit": "nx build app-lit",
     "build": "nx build",
     "test": "nx test",
-    "postinstall": "ngcc --properties es2020 browser module main"
+    "postinstall": "ngcc --properties es2020 browser module main",
+    "serve-components": "http-server dist"
   },
   "private": true,
   "dependencies": {
